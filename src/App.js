@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect } from 'react';
 
-function App() {
+const Weather = () => {
+  const ACCESS_KEY = "9ef48c0705499069b88c8af0bf120522";
+  useEffect(()=>{
+    getData();
+  },[])
+
+  const getData = async()=>{
+    const response = await fetch (`http://api.weatherstack.com/current?access_key=${ACCESS_KEY}&query=New York`);
+    const data = response.json();
+    console.log(data);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <h1> Hello React </h1>
   );
 }
 
-export default App;
+export default Weather;
